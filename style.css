@@ -1,0 +1,207 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fdf2f4;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100dvh; /* Адаптивна висота для мобільних */
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.main-title {
+    font-family: 'Marck Script', cursive;
+    font-size: 3.5em;
+    color: #2c2c2c;
+    margin-bottom: 20px;
+    text-align: center;
+    transition: opacity 0.5s ease;
+    padding: 0 15px;
+}
+
+.container {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 24px;
+    box-shadow: 0 15px 35px rgba(214, 51, 108, 0.15);
+    text-align: center;
+    width: 90%;
+    max-width: 420px;
+    position: relative;
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: all 0.5s ease;
+    z-index: 10;
+}
+
+h1 {
+    font-family: 'Comfortaa', sans-serif; /* Додаємо цей рядок для зміни шрифту */
+    color: #333;
+    font-size: 1.4em;
+    margin-bottom: 25px;
+    line-height: 1.4;
+}
+
+.food-title {
+    font-size: 1.2em;
+}
+
+button {
+    padding: 14px 30px;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    margin: 10px;
+}
+
+#btn-yes, .primary-btn {
+    background-color: #ff6b81;
+    color: white;
+    box-shadow: 0 4px 15px rgba(255, 107, 129, 0.4);
+}
+
+#btn-yes:active, .primary-btn:active {
+    transform: scale(0.95);
+    box-shadow: 0 0 20px 5px rgba(255, 107, 129, 0.6);
+}
+
+#btn-no {
+    background-color: #f1f2f6;
+    color: #747d8c;
+    position: relative;
+    z-index: 100;
+}
+
+.primary-btn.disabled {
+    background-color: #dfe4ea;
+    box-shadow: none;
+    cursor: not-allowed;
+    color: #a4b0be;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.form-group {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+    font-weight: 500;
+}
+
+input[type="date"], input[type="time"] {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #f1f2f6;
+    border-radius: 12px;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: 1em;
+    background-color: #f8f9fa;
+    transition: border-color 0.3s;
+}
+
+input[type="date"]:focus, input[type="time"]:focus {
+    outline: none;
+    border-color: #ff6b81;
+}
+
+.food-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.food-item {
+    padding: 15px 10px;
+    background-color: #f1f2f6;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 500;
+    color: #2f3542;
+    border: 2px solid transparent;
+}
+
+.food-item.selected {
+    background-color: #fff0f3;
+    border: 2px solid #ff6b81;
+    color: #ff6b81;
+    transform: scale(1.05);
+}
+
+.hearts-illustration {
+    font-size: 4em;
+    margin-bottom: 15px;
+    animation: heartbeat 1.5s infinite;
+}
+
+.summary-text {
+    font-size: 1.1em;
+    color: #57606f;
+    margin: 20px 0;
+    line-height: 1.6;
+}
+
+.signature {
+    font-size: 1.2em;
+    color: #ff6b81;
+    margin-top: 10px;
+}
+
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* Іскри навколо картки при натисканні ТАК */
+.sparkles {
+    position: absolute;
+    top: -20px; left: -20px; right: -20px; bottom: -20px;
+    pointer-events: none;
+    background: radial-gradient(circle, transparent 20%, #fdf2f4 20%, #fdf2f4 80%, transparent 80%, transparent) 0 0,
+                radial-gradient(circle, transparent 20%, #fdf2f4 20%, #fdf2f4 80%, transparent 80%, transparent) 25px 25px;
+    background-size: 50px 50px;
+    opacity: 0;
+    transition: opacity 1s;
+    z-index: -1;
+}
+
+.show-sparkles {
+    opacity: 1;
+    animation: fadeOut 2s forwards;
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* Падаючі сердечка на фоні */
+.floating-heart {
+    position: absolute;
+    top: -10vh;
+    z-index: 1; 
+    animation: fall linear forwards;
+    pointer-events: none;
+}
+
+@keyframes fall {
+    0% { transform: translateY(0) rotate(0deg); }
+    100% { transform: translateY(115vh) rotate(360deg); }
+}

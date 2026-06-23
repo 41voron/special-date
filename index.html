@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Спеціальне запрошення</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@600&family=Marck+Script&display=swap" rel="stylesheet">    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2 id="main-title" class="main-title">Спеціальне запрошення для моєї коханої</h2>
+
+    <div class="container" id="card-container">
+        
+        <div id="step1" class="step">
+            <h1>Привіт, Квіточка! Ти підеш зі мною на побачення? ❤️</h1>
+            <div class="buttons">
+                <button id="btn-yes">ТАК</button>
+                <button id="btn-no">НІ</button>
+            </div>
+        </div>
+
+        <div id="step2-3" class="step hidden">
+            <div class="sparkles" id="sparkles-container"></div>
+            <h1>Ура! Я такий радий! Коли ти вільна? 🥰</h1>
+            <div class="form-group">
+                <label>Вибери дату:</label>
+                <input type="date" id="date-picker">
+            </div>
+            <div class="form-group">
+                <label>Вибери час:</label>
+                <input type="time" id="time-picker">
+            </div>
+            <button id="btn-submit-time" class="primary-btn">НАДІСЛАТИ</button>
+        </div>
+
+        <div id="step4" class="step hidden">
+            <h1 class="food-title">Що ми будемо їсти? Вибери, що тобі до смаку! 🍱</h1>
+            <div class="food-options">
+                <div class="food-item" data-food="Суші">🍣 Суші</div>
+                <div class="food-item" data-food="Піца">🍕 Піца</div>
+                <div class="food-item" data-food="Паста">🍝 Паста</div>
+                <div class="food-item" data-food="Бургер">🍔 Бургер</div>
+            </div>
+            <button id="btn-confirm-food" class="primary-btn disabled">ПІДТВЕРДИТИ ВИБІР</button>
+        </div>
+
+        <div id="step5" class="step hidden">
+            <div class="hearts-illustration">💕</div>
+            <h1>Домовилися! Я вже не можу дочекатися! 🎉</h1>
+            <p id="final-summary" class="summary-text"></p>
+            <p class="signature">Я приїду за тобою. Будь готова!<br><strong>Завжди твій, Манюня</strong></p>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
