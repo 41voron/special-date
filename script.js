@@ -70,10 +70,61 @@ function moveNoButton() {
     btnNo.style.top = randomY + 'px';
 }
 
-// Запускаємо втечу при наведенні миші або дотику (на телефоні)
-btnNo.addEventListener('mouseover', moveNoButton);
+// --- 5. СМІШНІ ПОВІДОМЛЕННЯ ВІД КНОПКИ "НІ" ---
+
+// Масив з нашими жартами
+const funnyMessages = [
+    "Навіть не думай! 😏",
+    "Все одно натиснеш ТАК ❤️",
+    "Я ж бачу, що ти хитриш! ✨",
+    "Ой, промахнулася! 🏃‍♀️",
+    "Ця кнопка зламана 😜",
+    "Спробуй ще раз! 🤭",
+    "Може все-таки ТАК? 🥰"
+];
+
+// Функція створення тексту, що відлітає
+function showFunnyMessage() {
+    const msg = document.createElement('div');
+    // Вибираємо випадковий жарт
+    msg.innerText = funnyMessages[Math.floor(Math.random() * funnyMessages.length)];
+    
+    // Отримуємо поточні координати кнопки ПЕРЕД тим, як вона втече
+    const rect = btnNo.getBoundingClientRect();
+    
+    // Налаштовуємо зовнішній вигляд
+    msg.style.position = 'absolute';
+    msg.style.left = (rect.left + 10) + 'px';
+    msg.style.top = (rect.top - 10) + 'px';
+    msg.style.color = '#ff6b81';
+    msg.style.fontWeight = 'bold';
+    msg.style.fontSize = '1.1em';
+    msg.style.pointerEvents = 'none'; // Щоб текст не заважав клікати
+    msg.style.zIndex = '1000';
+    msg.style.transition = 'all 1s ease-out';
+    msg.style.opacity = '1';
+    
+    document.body.appendChild(msg);
+    
+    // Запускаємо анімацію: текст летить вгору і стає прозорим
+    setTimeout(() => {
+        msg.style.transform = 'translateY(-40px)';
+        msg.style.opacity = '0';
+    }, 50);
+    
+    // Повністю видаляємо елемент з пам'яті через 1 секунду
+    setTimeout(() => msg.remove(), 1000);
+}
+
+// Оновлюємо реакцію кнопки: тепер вона спочатку показує текст, а потім тікає
+btnNo.addEventListener('mouseover', () => {
+    showFunnyMessage();
+    moveNoButton();
+});
+
 btnNo.addEventListener('touchstart', (e) => {
-    e.preventDefault(); // Запобігає випадковому натисканню
+    e.preventDefault(); // Запобігає випадковому кліку на телефонах
+    showFunnyMessage();
     moveNoButton();
 });
 
