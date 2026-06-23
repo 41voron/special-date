@@ -18,6 +18,20 @@ const foodItems = document.querySelectorAll('.food-item');
 const finalSummary = document.getElementById('final-summary');
 const sparkles = document.getElementById('sparkles-container');
 const bgMusic = document.getElementById('bg-music'); // ДОДАНО РЯДОК
+// --- БЛОКУВАННЯ МИНУЛИХ ДАТ ---
+// Отримуємо сьогоднішню дату
+const today = new Date();
+
+// Форматуємо її у вигляд РРРР-ММ-ДД (як вимагає HTML)
+const yyyy = today.getFullYear();
+const mm = String(today.getMonth() + 1).padStart(2, '0'); // Місяці рахуються з нуля, тому +1
+const dd = String(today.getDate()).padStart(2, '0');
+
+const minDate = `${yyyy}-${mm}-${dd}`;
+
+// Встановлюємо цю дату як мінімально можливу для вибору
+datePicker.setAttribute('min', minDate);
+
 // Дані
 let date = '';
 let time = '';
