@@ -17,7 +17,7 @@ const timePicker = document.getElementById('time-picker');
 const foodItems = document.querySelectorAll('.food-item');
 const finalSummary = document.getElementById('final-summary');
 const sparkles = document.getElementById('sparkles-container');
-
+const bgMusic = document.getElementById('bg-music'); // ДОДАНО РЯДОК
 // Дані
 let date = '';
 let time = '';
@@ -31,6 +31,13 @@ btnYes.addEventListener('click', () => {
     step1.classList.add('hidden');
     step2_3.classList.remove('hidden');
     sparkles.classList.add('show-sparkles');
+
+    // --- ДОДАНО БЛОК ДЛЯ МУЗИКИ ---
+    bgMusic.volume = 0.5; // Встановлюємо гучність на 50%, щоб не налякати
+    bgMusic.play().catch(error => {
+        console.log("Браузер заблокував автовідтворення аудіо", error);
+    });
+    // ------------------------------
 });
 
 // Функція для втечі кнопки "НІ"
